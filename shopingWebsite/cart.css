@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0000004a; /* Black background */
+    color: #fff; /* White text color */
+    margin: 0;
+    padding: 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000; /* Black background */
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(255, 215, 0, 0.5); /* Gold shadow */
+    margin-bottom: 20px;
+}
+
+.navbar h1 {
+    text-align: center;
+    color: #ffd700; /* Gold text */
+}
+
+.navbar button {
+    background-color: #ffd700; /* Gold background */
+    border: none;
+    border-radius: 4px;
+    color: #000; /* Black text */
+    cursor: pointer;
+}
+
+.navbar button:hover {
+    background-color: #e6c200; /* Darker gold on hover */
+}
+
+.cart {
+    margin: 20px 20px;
+    padding: 10px;
+    background-color: #00000040; /* Black background */
+    border: 1px solid #ffd700; /* Gold border */
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(255, 215, 0, 0.5); /* Gold shadow */
+}
+
+.cart h2 {
+    font-size: 18px;
+    margin-top: 0;
+    color: #ffd700; /* Gold color */
+}
+
+.cart-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.cart-item {
+    margin-top: 10px;
+    border: 1px solid #ffd700; /* Gold border */
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #00000064; /* Black background */
+    box-shadow: 0 2px 5px rgba(255, 215, 0, 0.5); /* Gold shadow */
+    transition: box-shadow 0.3s;
+    width: calc(20% - 20px);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.cart-item img {
+    border: 1px solid #ffd700; /* Gold border */
+    border-radius: 4px;
+    height: 103.43px;
+    width: 77.96px;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item button {
+    background-color: #ffd700; /* Gold background */
+    border: none;
+    color: #000; /* Black text */
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.cart-item button:hover {
+    background-color: #e6c200; /* Darker gold on hover */
+}
+
+.cart-item-quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantity-btn {
+    background-color: #ffd700; /* Gold background */
+    border: none;
+    color: #000; /* Black text */
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.quantity-btn:hover {
+    background-color: #e6c200; /* Darker gold on hover */
+}
+
+.quantity-display {
+    font-size: 14px;
+    margin: 0 10px;
+}
+
+.category, .vendor {
+    font-size: 20px;
+    color: #ffd700; /* Gold color */
+    font-weight: bold;
+}
+
+.price {
+    font-size: 20px;
+    color: #ffd700; /* Gold color */
+    font-weight: bold;
+}
+
+.compare-at-price {
+    text-decoration: line-through;
+    color: #dc3545; /* Red color */
+    margin-left: 10px;
+    font-weight: normal;
+}

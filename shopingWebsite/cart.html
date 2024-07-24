@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Shopping Cart</h1>
+        <button onclick="goHome()">Home</button>
+    </div>
+
+    <div id="cartItems" class="cart"></div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Initialize quantity for items without it
+        cart.forEach(item => {
+            if (item.quantity === undefined) {
+                item.quantity = 1;
+            }
+        });
+
+        function displayCart() {
+            const cartItemsDiv = document.getElementById('cartItems');
+            cartItemsDiv.innerHTML = '<h2>Your Cart</h2>';
+            const cartItemsList = document.createElement('ul');
+            cartItemsList.className = 'cart-items';
+            cart.forEach(item => {
+                const cartItem = document.createElement('li');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-container">
+                        <img src="${item.image}" alt="${item.title}">
+                        <div class="cart-item-details">
+                            <p><strong>${item.title}</strong></p>
+                            <p class = "vendor"><Strong>${item.vendor}</Strong></p>
+                            <p class = "category"><strong>${item.product_type}</strong></p>
+                            <p class ="price"><strong>Price: ${item.price * item.quantity}</strong><span class="compare-at-price">${item.compare_at_price * item.quantity}</span></p>
+                            
+                            <p>Quantity: 
+                                <button class="quantity-btn" onclick="changeQuantity('${item.title}', -1)">-</button> 
+                                <span class="quantity-display">${item.quantity}</span> 
+                                <button class="quantity-btn" onclick="changeQuantity('${item.title}', 1)">+</button>
+                            </p>
+                            <button onclick="removeFromCart('${item.title}')">Remove</button>
+                        </div>
+                    </div>
+                `;
+                cartItemsList.appendChild(cartItem);
+            });
+            cartItemsDiv.appendChild(cartItemsList);
+        }
+
+        function removeFromCart(productTitle) {
+            cart = cart.filter(item => item.title !== productTitle);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function changeQuantity(productTitle, change) {
+            const product = cart.find(item => item.title === productTitle);
+            if (product) {
+                product.quantity += change;
+                if (product.quantity <= 0) {
+                    removeFromCart(productTitle);
+                } else {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    displayCart();
+                }
+            }
+        }
+
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+
+        // Save updated cart with initialized quantities
+        localStorage.setItem('cart', JSON.stringify(cart));
+        displayCart();
+    </script>
+</body>
+</html>
